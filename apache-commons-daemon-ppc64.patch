@@ -1,0 +1,24 @@
+diff -up commons-daemon-1.0.10-src/src/native/unix/configure.ppc64 commons-daemon-1.0.10-src/src/native/unix/configure
+--- commons-daemon-1.0.10-src/src/native/unix/configure.ppc64	2012-08-17 15:50:17.060069518 +0200
++++ commons-daemon-1.0.10-src/src/native/unix/configure	2012-08-17 15:51:23.540069517 +0200
+@@ -2607,7 +2607,7 @@ echo "$as_me: error: Unsupported operati
+     ;;
+   esac
+   case $host_cpu in
+-  powerpc)
++  powerpc*)
+     CFLAGS="$CFLAGS -DCPU=\\\"$host_cpu\\\""
+     HOST_CPU=$host_cpu;;
+   sparc*)
+diff -up commons-daemon-1.0.10-src/src/native/unix/support/apsupport.m4.ppc64 commons-daemon-1.0.10-src/src/native/unix/support/apsupport.m4
+--- commons-daemon-1.0.10-src/src/native/unix/support/apsupport.m4.ppc64	2012-08-17 15:50:30.330069517 +0200
++++ commons-daemon-1.0.10-src/src/native/unix/support/apsupport.m4	2012-08-17 15:51:33.280069517 +0200
+@@ -76,7 +76,7 @@ AC_DEFUN(AP_SUPPORTED_HOST,[
+     ;;
+   esac
+   case $host_cpu in
+-  powerpc)
++  powerpc*)
+     CFLAGS="$CFLAGS -DCPU=\\\"$host_cpu\\\""
+     HOST_CPU=$host_cpu;;
+   sparc*)
