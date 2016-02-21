@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0.13
-Release:        6.12%{?dist}
+Release:        6.13%{?dist}
 Summary:        Defines API to support an alternative invocation mechanism
 License:        ASL 2.0
 URL:            http://commons.apache.org/%{base_name}
@@ -20,8 +20,8 @@ Patch3:         apache-commons-daemon-ppc64.patch
 Patch4:         apache-commons-daemon-aarch64.patch
 BuildRequires:  %{?scl_prefix_java_common}maven-local
 BuildRequires:  %{?scl_prefix_java_common}javapackages-tools
-BuildRequires:  maven30-apache-commons-parent >= 26-7
-BuildRequires:  maven30-maven-surefire-provider-junit
+BuildRequires:  %{?scl_prefix}apache-commons-parent >= 26-7
+BuildRequires:  %{?scl_prefix}maven-surefire-provider-junit
 BuildRequires:  xmlto
 
 
@@ -37,7 +37,7 @@ Java applications.
 
 %package        jsvc
 Summary:        Java daemon launcher
-Requires:       maven30-runtime
+Requires:       %{?scl_prefix}runtime
 
 
 %description    jsvc
@@ -54,7 +54,7 @@ BuildArch:      noarch
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %patch0 -p1 -b .execve
 %patch1 -p1 -b .java_os
@@ -72,7 +72,7 @@ xmlto man man/jsvc.1.xml
 
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 
 . /opt/rh/rh-java-common/root/usr/share/java-utils/java-functions
@@ -95,7 +95,7 @@ popd
 
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 # install native jsvc
 install -Dpm 755 src/native/unix/jsvc $RPM_BUILD_ROOT%{_bindir}/jsvc
@@ -121,6 +121,9 @@ install -Dpm 644 src/native/unix/jsvc.1 $RPM_BUILD_ROOT%{_mandir}/man1/jsvc.1
 
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.0.13-6.13
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 1.0.13-6.12
 - maven33 rebuild
 
