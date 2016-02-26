@@ -8,7 +8,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0.13
-Release:        6.13%{?dist}
+Release:        6.14%{?dist}
 Summary:        Defines API to support an alternative invocation mechanism
 License:        ASL 2.0
 URL:            http://commons.apache.org/%{base_name}
@@ -18,7 +18,7 @@ Patch1:         apache-commons-daemon-JAVA_OS.patch
 Patch2:         apache-commons-daemon-s390x.patch
 Patch3:         apache-commons-daemon-ppc64.patch
 Patch4:         apache-commons-daemon-aarch64.patch
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix_java_common}javapackages-tools
 BuildRequires:  %{?scl_prefix}apache-commons-parent >= 26-7
 BuildRequires:  %{?scl_prefix}maven-surefire-provider-junit
@@ -121,6 +121,9 @@ install -Dpm 644 src/native/unix/jsvc.1 $RPM_BUILD_ROOT%{_mandir}/man1/jsvc.1
 
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1.0.13-6.14
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.0.13-6.13
 - maven33 rebuild #2
 
